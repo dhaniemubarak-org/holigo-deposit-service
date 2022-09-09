@@ -12,8 +12,7 @@ public class JmsConfig {
 
     public static final String DEBIT_DEPOSIT = "debit-deposit";
     public static final String CREDIT_DEPOSIT = "credit-deposit";
-
-    public static final String CREATE_ACCOUNT_STATEMENT = "create-account-statement";
+    public static final String CREATE_DEPOSIT_ACCOUNT_STATEMENT = "create-deposit-account-statement";
 
     @Bean
     public MessageConverter jacksonJmsMessageConverter(ObjectMapper objectMapper) {

@@ -29,7 +29,7 @@ public class AccountBalanceServiceImpl implements AccountBalanceService {
 
     @Override
     public DepositDto createAccountStatement(DepositDto depositDto) throws JMSException, JsonProcessingException {
-        Message received = jmsTemplate.sendAndReceive(JmsConfig.CREATE_ACCOUNT_STATEMENT, session -> {
+        Message received = jmsTemplate.sendAndReceive(JmsConfig.CREATE_DEPOSIT_ACCOUNT_STATEMENT, session -> {
             Message message;
             try {
                 message = session.createTextMessage(objectMapper.writeValueAsString(depositDto));
