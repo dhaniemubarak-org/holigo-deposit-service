@@ -55,6 +55,9 @@ public class DepositStatement {
 
     private String invoiceNumber;
 
+    @Column(length = 20, columnDefinition = "varchar(20) default 'PAYMENT'")
+    private String category = "PAYMENT";
+
     @CreationTimestamp
     @Column(updatable = false)
     private Timestamp createdAt;
