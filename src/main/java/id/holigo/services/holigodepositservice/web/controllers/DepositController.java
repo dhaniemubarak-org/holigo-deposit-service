@@ -37,15 +37,15 @@ public class DepositController {
         this.depositService = depositService;
     }
 
-    @PostMapping("/api/v1/deposit/debit")
-    public ResponseEntity<DepositDto> debit(@RequestBody DepositDto depositDto) throws JMSException, JsonProcessingException {
-        return new ResponseEntity<>(depositService.debit(depositDto), HttpStatus.CREATED);
-    }
-
-    @PostMapping("/api/v1/deposit/credit")
-    public ResponseEntity<DepositDto> credit(@RequestBody DepositDto depositDto) throws JMSException, JsonProcessingException {
-        return new ResponseEntity<>(depositService.credit(depositDto), HttpStatus.CREATED);
-    }
+//    @PostMapping("/api/v1/deposit/debit")
+//    public ResponseEntity<DepositDto> debit(@RequestBody DepositDto depositDto) throws JMSException, JsonProcessingException {
+//        return new ResponseEntity<>(depositService.debit(depositDto), HttpStatus.CREATED);
+//    }
+//
+//    @PostMapping("/api/v1/deposit/credit")
+//    public ResponseEntity<DepositDto> credit(@RequestBody DepositDto depositDto) throws JMSException, JsonProcessingException {
+//        return new ResponseEntity<>(depositService.credit(depositDto), HttpStatus.CREATED);
+//    }
 
     @PostMapping("/api/v1/deposit/book")
     public ResponseEntity<HttpStatus> createBook(@RequestBody DepositTransactionDto depositTransactionDto,

@@ -56,6 +56,12 @@ public class DepositTransactionKafkaListener {
         Optional<DepositTransaction> fetchDepositTransaction = depositTransactionRepository.findById(depositTransactionDto.getId());
         if (fetchDepositTransaction.isPresent()) {
             DepositTransaction depositTransaction = fetchDepositTransaction.get();
+            if (depositTransactionDto.getPaymentStatus().equals(PaymentStatusEnum.WAITING_PAYMENT)) {
+                depositTransaction.setPaymentId(depositTransactionDto.getPaymentId());
+                depositTransaction.setPaymentServiceId(depositTransactionDto.getPaymentServiceId());
+                depositTransactionRepository.save(depositTransaction);
+                paymentStatusService.paymentHasBeenSet(depositTransaction.getId());
+            }
             if (depositTransactionDto.getPaymentStatus().equals(PaymentStatusEnum.PAYMENT_EXPIRED)) {
                 paymentStatusService.depositTransactionHasBeenExpired(depositTransaction.getId());
                 orderStatusService.expiredTransaction(depositTransaction.getId());
